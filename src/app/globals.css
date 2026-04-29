@@ -38,7 +38,7 @@
   --color-secondary: #8888A0;
 
   /* Font families — values are fallbacks; next/font overrides these at runtime */
-  --font-display: "Syne", sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }

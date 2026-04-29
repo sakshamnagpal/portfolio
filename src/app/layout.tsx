@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Navbar } from "@/components/sections/Navbar";
 import "./globals.css";
 
-const syne = Syne({
+const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -36,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+      className={`${bricolageGrotesque.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
     >
       <body>
         <Navbar />

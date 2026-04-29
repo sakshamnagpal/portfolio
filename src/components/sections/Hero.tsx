@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-visible">
       {/* Radial gradient: faint accent glow from top-left */}
       <div
         aria-hidden
@@ -28,7 +28,7 @@ export function Hero() {
 
         {/* H1 */}
         <h1
-          className="font-display text-5xl md:text-7xl font-bold text-primary leading-tight mb-6 animate-fade-up"
+          className="font-display text-5xl md:text-7xl font-bold text-primary leading-[1.1] pb-2 mb-6 animate-fade-up padding-bottom: 8px"
           style={{ animationDelay: "120ms" }}
         >
           Hi, I&apos;m Sak Nagpal
@@ -39,7 +39,7 @@ export function Hero() {
           className="text-secondary text-lg max-w-xl leading-relaxed mb-10 animate-fade-up"
           style={{ animationDelay: "240ms" }}
         >
-          I build data-driven systems and agentic AI pipelines — turning complex
+          I build data-driven systems and agentic AI pipelines - turning complex
           problems into production-ready solutions.
         </p>
 

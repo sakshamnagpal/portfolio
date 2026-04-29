@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
-import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const syne = Syne({
-  variable: "--font-display",
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",

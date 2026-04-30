@@ -52,6 +52,18 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    slug: "melbourne-property-research-agent",
+    title: "Melbourne Property Research Agent",
+    tagline: "Agentic AI tool for suburb-level property research and investment analysis.",
+    description:
+      "A fully agentic React + FastAPI application that autonomously researches Melbourne suburbs for property investment decisions. Built on a LangGraph ReAct reasoning loop — the agent decides which tools to call, in what order, based on the user's query. Integrates four data tools covering suburb market stats, demographics, nearby amenities, and 5-year price trends across 8 Melbourne suburbs. Features real-time streaming responses via Server-Sent Events, with visible tool call steps so users can follow the agent's reasoning. Backend deployed on Railway, frontend on Vercel.",
+    tags: ["Agentic AI", "Full-Stack", "Property"],
+    techStack: ["Python", "FastAPI", "LangGraph", "Claude API", "React", "Tailwind CSS", "Railway"],
+    liveUrl: "https://melbourne-property-tool.vercel.app",
+    githubUrl: "https://github.com/sakshamnagpal/melbourne-property-tool",
+    featured: true,
+  },
+  {
     slug: "aus-super-calculator",
     title: "Australian Superannuation Calculator",
     tagline: "Interactive super growth projector encoding Australian tax rules.",

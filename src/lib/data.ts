@@ -98,3 +98,53 @@ export const skillCategories: SkillCategory[] = [
              "Bachelor of Technology (CS) — Federation University"],
   },
 ]
+
+export type Experience = {
+  role: string
+  company: string
+  location: string
+  period: string
+  summary: string
+  highlights: string[]
+}
+
+export const experiences: Experience[] = [
+  {
+    role: "AI Implementation Lead & Senior Data Scientist",
+    company: "Jetstar Airways",
+    location: "Melbourne, Australia",
+    period: "Oct 2023 – Present",
+    summary: "Leading delivery of AI and Generative AI solutions across operations, driving adoption of scalable, production-ready ML systems and mentoring cross-functional teams.",
+    highlights: [
+      "Built production LLM complaint classification system processing 100k+ enquiries, achieving 92% classification coverage",
+      "Delivered NLP pipeline for aircraft maintenance log classification, reducing mean fault identification time by 30%",
+      "Architected internal knowledge assistant on Amazon Bedrock, reducing staff onboarding time by over 95%",
+      "Established standardised ML experimentation frameworks, reducing iteration cycles by ~30%",
+      "Built reusable data and ML pipelines in Snowflake across multiple production use cases",
+    ],
+  },
+  {
+    role: "Data Scientist",
+    company: "Australia and New Zealand Bank (ANZ)",
+    location: "Melbourne, Australia",
+    period: "Dec 2019 – Oct 2023",
+    summary: "Led customer segmentation modelling and credit risk analysis across ~5M retail banking customers.",
+    highlights: [
+      "Led customer segmentation modelling workstream, presenting outcomes to senior business stakeholders",
+      "Designed controlled experiments evaluating credit risk models serving ~5M retail banking customers",
+      "Identified feature drift and degradation patterns informing quarterly retraining cycles",
+      "Built dashboards and analytical tools to communicate insights across cross-functional stakeholders",
+    ],
+  },
+  {
+    role: "Data Analyst / Senior Student Systems Analyst",
+    company: "Wesley College",
+    location: "Melbourne, Australia",
+    period: "Dec 2017 – Dec 2019",
+    summary: "Analysed large datasets to drive student performance outcomes and automated reporting processes.",
+    highlights: [
+      "Identified improvement opportunities contributing to a 15% increase in student performance outcomes",
+      "Automated reporting processes, improving efficiency across the analytics function",
+    ],
+  },
+]

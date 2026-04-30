@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 
@@ -23,6 +23,27 @@ function LinkedinIcon({ size = 16 }: { size?: number }) {
 export function Contact() {
   const [state, setState] = useState<FormState>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  // Fade-in for each column
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const [leftIn, setLeftIn] = useState(false);
+  const [rightIn, setRightIn] = useState(false);
+
+  useEffect(() => {
+    const observe = (el: Element | null, setter: (v: boolean) => void) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) { setter(true); obs.disconnect(); } },
+        { threshold: 0.1 }
+      );
+      obs.observe(el);
+      return () => obs.disconnect();
+    };
+    const c1 = observe(leftRef.current, setLeftIn);
+    const c2 = observe(rightRef.current, setRightIn);
+    return () => { c1?.(); c2?.(); };
+  }, []);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -61,7 +82,10 @@ export function Contact() {
     <SectionWrapper id="contact">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
         {/* ── Left column ── */}
-        <div>
+        <div
+          ref={leftRef}
+          className={`transition-all duration-700 ease-out ${leftIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
           <h2 className="font-display text-4xl font-bold text-primary mb-3">
             Get in Touch
           </h2>
@@ -101,7 +125,11 @@ export function Contact() {
         </div>
 
         {/* ── Right column ── */}
-        <div>
+        <div
+          ref={rightRef}
+          style={{ transitionDelay: "150ms" }}
+          className={`transition-all duration-700 ease-out ${rightIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
           {state === "success" ? (
             <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
               <CheckCircle2 size={40} className="text-accent" />

@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-visible">
+    <section id="about" className="relative min-h-screen flex items-center overflow-visible">
       {/* Radial gradient: faint accent glow from top-left */}
       <div
         aria-hidden

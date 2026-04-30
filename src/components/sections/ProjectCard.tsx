@@ -10,7 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className={`flex flex-col bg-surface border border-white/5 rounded-xl p-6 transition-colors duration-200 hover:border-white/10 ${
+      className={`flex flex-col h-full bg-surface border border-white/5 rounded-xl p-6 transition-colors duration-200 hover:border-white/10 ${
         project.featured ? "border-t-accent border-t-2" : ""
       }`}
     >

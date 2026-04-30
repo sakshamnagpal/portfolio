@@ -24,9 +24,31 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saksham Nagpal | Data Scientist & AI Engineer",
+  title: "Saksham Nagpal | Senior Data Scientist & AI Engineer",
   description:
-    "Portfolio of Sak Nagpal — Senior Data Scientist specialising in agentic AI, machine learning, and data engineering",
+    "Portfolio of Sak Nagpal — Senior Data Scientist specialising in agentic AI, LLMs, NLP, and production ML systems. Based in Melbourne, Australia.",
+  keywords: [
+    "data scientist",
+    "AI engineer",
+    "machine learning",
+    "LLMs",
+    "RAG",
+    "NLP",
+    "Melbourne",
+    "Jetstar",
+    "ANZ",
+    "Python",
+    "Snowflake",
+  ],
+  openGraph: {
+    title: "Saksham Nagpal | Senior Data Scientist & AI Engineer",
+    description:
+      "Portfolio of Sak Nagpal — Senior Data Scientist specialising in agentic AI, LLMs, NLP, and production ML systems. Based in Melbourne, Australia.",
+    type: "website",
+  },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({

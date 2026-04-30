@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -9,8 +9,39 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+// Maps section id → nav href so only sections with a nav link update the active state
+const SECTION_NAV_MAP: Record<string, string> = {
+  about: "#about",
+  projects: "#projects",
+  skills: "#skills",
+  contact: "#contact",
+};
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("#about");
+
+  useEffect(() => {
+    const ids = Object.keys(SECTION_NAV_MAP);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && SECTION_NAV_MAP[entry.target.id]) {
+            setActive(SECTION_NAV_MAP[entry.target.id]);
+          }
+        });
+      },
+      // Trigger when a section's centre crosses the upper-middle of the viewport
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-base/90 backdrop-blur-md">
@@ -28,7 +59,11 @@ export function Navbar() {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm text-secondary hover:text-primary transition-colors duration-200"
+                className={`text-sm transition-colors duration-200 ${
+                  active === href
+                    ? "text-accent font-medium"
+                    : "text-secondary hover:text-primary"
+                }`}
               >
                 {label}
               </a>
@@ -36,7 +71,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile hamburger button */}
+        {/* Mobile hamburger */}
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -78,16 +113,24 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
-      {open && (
-        <div className="md:hidden border-t border-white/5">
-          <ul className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
+      {/* Mobile dropdown — animated via CSS grid height trick */}
+      <div
+        className={`md:hidden grid transition-[grid-template-rows] duration-300 ease-in-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <ul className="border-t border-white/5 max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <a
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="block text-sm text-secondary hover:text-primary transition-colors duration-200"
+                  className={`block text-sm transition-colors duration-200 ${
+                    active === href
+                      ? "text-accent font-medium"
+                      : "text-secondary hover:text-primary"
+                  }`}
                 >
                   {label}
                 </a>
@@ -95,7 +138,7 @@ export function Navbar() {
             ))}
           </ul>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

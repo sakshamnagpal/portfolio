@@ -63,3 +63,9 @@ Formspree endpoint to be added once account is set up.
 - No CMS
 - No database
 - No paid services
+
+## Backlog
+- [ ] Individual project pages (/projects/[slug]) - full writeup per project
+      including: problem context, approach, architecture, key decisions,
+      learnings, and charts/visuals where relevant. Data already structured
+      in lib/data.ts with slug field ready for dynamic routing.

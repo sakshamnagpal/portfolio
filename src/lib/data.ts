@@ -64,3 +64,37 @@ export const projects: Project[] = [
     featured: false,
   },
 ]
+
+export type SkillCategory = {
+  category: string
+  skills: string[]
+}
+
+export const skillCategories: SkillCategory[] = [
+  {
+    category: "AI & Machine Learning",
+    skills: ["Python", "scikit-learn", "LLMs", "RAG", "Prompt Engineering",
+             "Claude API", "OpenAI API", "Amazon Bedrock", "Hugging Face",
+             "LangChain", "spaCy", "NLTK", "KNN / Clustering"],
+  },
+  {
+    category: "Data Engineering",
+    skills: ["Snowflake", "PySpark", "SQL", "SQL Server", "ETL/ELT Pipelines",
+             "AWS", "GCP"],
+  },
+  {
+    category: "Visualisation & Delivery",
+    skills: ["Power BI", "Tableau", "Streamlit", "Jupyter"],
+  },
+  {
+    category: "ML Engineering",
+    skills: ["MLOps", "Model Monitoring", "CI/CD", "Containerisation",
+             "GitHub Copilot"],
+  },
+  {
+    category: "Certifications",
+    skills: ["SnowPro Core — Snowflake (2025)",
+             "Master of Data Science — Monash University",
+             "Bachelor of Technology (CS) — Federation University"],
+  },
+]

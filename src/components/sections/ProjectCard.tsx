@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import type { Project } from "@/lib/data";
 
@@ -61,8 +62,8 @@ export function ProjectCard({ project }: { project: Project }) {
       {/* Spacer to push footer to bottom */}
       <div className="mt-auto" />
 
-      {/* Footer: external links */}
-      {(project.liveUrl || project.githubUrl) && (
+      {/* Footer: external links + project detail */}
+      {(project.liveUrl || project.githubUrl || project.slug) && (
         <div className="flex items-center gap-4 pt-4 border-t border-white/5">
           {project.liveUrl && (
             <a
@@ -95,6 +96,15 @@ export function ProjectCard({ project }: { project: Project }) {
               </svg>
               GitHub
             </a>
+          )}
+          {project.slug && (
+            <Link
+              href={`/projects/${project.slug}`}
+              className="flex items-center gap-1.5 text-xs text-secondary hover:text-accent transition-colors duration-200 ml-auto"
+            >
+              View Project
+              <ArrowRight size={14} />
+            </Link>
           )}
         </div>
       )}

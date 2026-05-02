@@ -8,6 +8,13 @@ export type Project = {
   liveUrl?: string
   githubUrl?: string
   featured: boolean
+  // Rich detail fields for individual project pages
+  employer?: string
+  period?: string
+  summary?: string
+  problem?: string
+  approach?: string
+  outcome?: string
 }
 
 export const projects: Project[] = [
@@ -17,9 +24,18 @@ export const projects: Project[] = [
     tagline: "LLM-powered complaint classification and routing at scale.",
     description:
       "Built and deployed a production LLM-based customer complaint classification and routing system processing 100k+ historical enquiries at Jetstar Airways. Combined the Claude API with KNN clustering to identify complaint categories, achieving 92% classification coverage — replacing a brittle rule-based approach and materially improving routing accuracy and resolution efficiency. Designed a RAG-based architecture integrating internal knowledge sources, evaluating trade-offs across latency, cost, and model performance.",
-    tags: ["Agentic AI", "NLP", "Production ML"],
-    techStack: ["Python", "Claude API", "RAG", "KNN", "Snowflake"],
+    tags: ["Generative AI", "NLP", "LLMs", "Production ML"],
+    techStack: ["Python", "Claude API", "RAG", "KNN / Clustering", "LangChain", "Snowflake", "MLOps"],
     featured: true,
+    employer: "Jetstar Airways",
+    period: "2023 – Present",
+    summary: "Production LLM system that classifies and routes 100k+ customer complaints, replacing a brittle rule-based pipeline.",
+    problem:
+      "Jetstar's customer complaint routing relied on a fragile rule-based system that struggled with the natural language variability of real enquiries — resulting in misrouted complaints, slower resolution times, and limited visibility into complaint trends at scale.",
+    approach:
+      "Built a production classification and routing system combining the Claude API with KNN clustering to identify complaint categories from 100k+ historical enquiries. Designed a RAG-based architecture integrating internal knowledge sources. Evaluated trade-offs across latency, cost, and model performance to arrive at the production configuration.",
+    outcome:
+      "Achieved 92% classification coverage across complaint categories. Materially improved routing accuracy and resolution efficiency. Replaced the rule-based system entirely in production.",
   },
   {
     slug: "maintenance-log-classification",

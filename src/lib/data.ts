@@ -56,9 +56,9 @@ export const projects: Project[] = [
     title: "Melbourne Property Research Agent",
     tagline: "Agentic AI tool for suburb-level property research and investment analysis.",
     description:
-      "A fully agentic React + FastAPI application that autonomously researches Melbourne suburbs for property investment decisions. Built on a LangGraph ReAct reasoning loop — the agent decides which tools to call, in what order, based on the user's query. Integrates four data tools covering suburb market stats, demographics, nearby amenities, and 5-year price trends across 8 Melbourne suburbs. Features real-time streaming responses via Server-Sent Events, with visible tool call steps so users can follow the agent's reasoning. Backend deployed on Railway, frontend on Vercel.",
+      "A fully agentic React + FastAPI application that autonomously researches Melbourne suburbs for property investment decisions. Built on a LangGraph state graph with conditional edges and real-time streaming SSE — the agent selects tools dynamically with visible reasoning steps. Powered by live data sources: property prices and median sale stats from Victorian Valuer General (VGV) sales data, and suburb demographics from the ABS 2021 Census DataPack covering population, median income, household composition, and owner vs. renter split. Price trend queries render an inline Recharts chart directly in the chat UI. A Haiku-based query guardrail classifies and short-circuits irrelevant queries before they reach the agent loop. Amenities integration in progress. Backend deployed on Railway, frontend on Vercel.",
     tags: ["Agentic AI", "Full-Stack", "Property"],
-    techStack: ["Python", "FastAPI", "LangGraph", "Claude API", "React", "Tailwind CSS", "Railway"],
+    techStack: ["Python", "FastAPI", "LangGraph", "Claude API", "ABS Census Data", "VGV Sales Data", "React", "Vite", "Recharts", "Railway", "Vercel"],
     liveUrl: "https://melbourne-property-tool.vercel.app",
     githubUrl: "https://github.com/sakshamnagpal/melbourne-property-tool",
     featured: true,

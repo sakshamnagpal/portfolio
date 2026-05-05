@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Writing", href: "#writing" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -13,7 +15,9 @@ const NAV_LINKS = [
 const SECTION_NAV_MAP: Record<string, string> = {
   about: "#about",
   projects: "#projects",
+  writing: "#writing",
   skills: "#skills",
+  experience: "#experience",
   contact: "#contact",
 };
 

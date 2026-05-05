@@ -208,6 +208,25 @@ export const projects: Project[] = [
   },
 ]
 
+export type Article = {
+  title: string
+  url: string
+  description: string
+  publication: string
+  date: string
+}
+
+export const articles: Article[] = [
+  {
+    title: "I Built a RAG Evaluation Framework from Scratch. Here's What Broke It.",
+    url: "https://medium.com/@sakshamnagp/i-built-a-rag-evaluation-framework-from-scratch-heres-what-broke-it-762767228f06",
+    description:
+      "A controlled experiment across chunk size, overlap, and top-k retrieval using 30 aviation safety reports — and what the results actually revealed.",
+    publication: "Medium",
+    date: "May 2026",
+  },
+]
+
 export type SkillCategory = {
   category: string
   skills: string[]

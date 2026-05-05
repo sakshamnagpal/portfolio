@@ -182,24 +182,108 @@ export const projects: Project[] = [
     title: "Melbourne Property Research Agent",
     tagline: "Agentic AI tool for suburb-level property research and investment analysis.",
     description:
-      "A fully agentic React + FastAPI application that autonomously researches Melbourne suburbs for property investment decisions. Built on a LangGraph state graph with conditional edges and real-time streaming SSE — the agent selects tools dynamically with visible reasoning steps. Powered by live data sources: property prices and median sale stats from Victorian Valuer General (VGV) sales data, and suburb demographics from the ABS 2021 Census DataPack covering population, median income, household composition, and owner vs. renter split. Price trend queries render an inline Recharts chart directly in the chat UI. A Haiku-based query guardrail classifies and short-circuits irrelevant queries before they reach the agent loop. Amenities integration in progress. Backend deployed on Railway, frontend on Vercel.",
-    tags: ["Agentic AI", "Full-Stack", "Property"],
-    techStack: ["Python", "FastAPI", "LangGraph", "Claude API", "ABS Census Data", "VGV Sales Data", "React", "Vite", "Recharts", "Railway", "Vercel"],
+      "A full-stack agentic AI application that researches Melbourne suburbs for property investment decisions, built on a LangGraph ReAct reasoning loop with a FastAPI streaming backend and React frontend.",
+    tags: ["Agentic AI", "Full-Stack", "LangGraph", "RAG", "Property", "Streaming"],
+    techStack: ["Python", "FastAPI", "LangGraph", "Claude API", "React", "Vite", "Tailwind CSS", "Recharts", "SQLite", "Railway", "Vercel"],
+    stack: ["Python", "FastAPI", "LangGraph", "Claude API", "React", "Vite", "Tailwind CSS", "Recharts", "SQLite", "Railway", "Vercel"],
     liveUrl: "https://melbourne-property-tool.vercel.app",
     githubUrl: "https://github.com/sakshamnagpal/melbourne-property-tool",
     featured: true,
+    employer: "Personal Project",
+    period: "2025 – Present",
+    summary:
+      "A full-stack agentic AI application that researches Melbourne suburbs for property investment decisions, built on a LangGraph ReAct reasoning loop with a FastAPI streaming backend and React frontend.",
+    problem:
+      "Property research in Melbourne is fragmented — median prices, demographic profiles, rental yields, and price trend data live across multiple government and commercial sources. There was no single conversational tool that could autonomously pull these signals together, reason across them, and return a coherent suburb-level analysis. Existing tools either required manual cross-referencing or sat behind financial product sign-up flows.",
+    approach:
+      "Built a full-stack agentic system from scratch. The agent is a LangGraph ReAct reasoning loop powered by the Claude API — it decides which tools to call, in what order, based on the user's query. Four tools cover the core research dimensions: suburb market stats, demographics (ABS 2021 Census), 5-year price trends (Victorian Valuer General data), and amenities (in progress). All data is preprocessed into SQLite for fast local retrieval. The FastAPI backend streams responses to the React frontend via Server-Sent Events, exposing the agent's tool-call reasoning chain step-by-step in the UI. A lightweight Claude Haiku-based guardrail classifies and short-circuits out-of-scope queries before they hit the agent loop. Price trend queries render an inline Recharts chart directly in the chat UI. Frontend is deployed on Vercel; backend on Railway with automated CI/CD on every git push.",
+    keyDecisions: [
+      {
+        decision: "LangGraph ReAct over a single-prompt approach",
+        detail:
+          "A single LLM call with all suburb data stuffed into context would have been simpler to build but wouldn't demonstrate agentic reasoning. The LangGraph state graph with conditional edges means the agent dynamically decides which tools to call based on query intent — a much stronger portfolio signal and a more honest representation of how production agentic systems work.",
+      },
+      {
+        decision: "VGV and ABS data over live commercial APIs",
+        detail:
+          "Victorian Valuer General sales data and ABS 2021 Census DataPacks are authoritative government sources — more credible than scraped or estimated figures. Preprocessing both into SQLite keeps retrieval fast and keeps the app free to run. The trade-off is data recency, which is the primary thing to address in future iterations.",
+      },
+      {
+        decision: "Haiku guardrail before the agent loop",
+        detail:
+          "Running a full ReAct loop on every query — including irrelevant or malformed ones — wastes tokens and degrades response time. A cheap Haiku-based classifier up front short-circuits out-of-scope queries before they reach the agent. This is a production pattern that most portfolio projects skip, and it signals cost-awareness and systems thinking.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Streaming SSE lifecycle",
+        body: "Streaming Server-Sent Events through a FastAPI backend to a React frontend required careful handling of connection lifecycle, especially keeping the reasoning chain visible without blocking the final response.",
+      },
+      {
+        title: "Data pipeline preprocessing",
+        body: "Preprocessing VGV and ABS data into a clean, queryable format required significant pipeline work before any agent logic could be written.",
+      },
+    ],
+    outcome:
+      "A fully deployed, publicly accessible agentic research tool at melbourne-property-tool.vercel.app. Demonstrates end-to-end ownership of a production-pattern agentic system — from data pipeline through agent design, streaming API, and React frontend — built and shipped as a solo project.",
+    myRole:
+      "Sole developer across the full stack — data preprocessing, agent design, FastAPI backend, React frontend, and deployment infrastructure. Conceived independently; discussed the product idea with a collaborator who may be involved in a future expanded version of the tool.",
+    whatIdDoDifferently:
+      "I would source more recent property data — VGV and ABS are authoritative but not current. Live data integration (e.g. Domain.com.au API or CoreLogic) would meaningfully improve the tool's usefulness, though these are paid sources. I would also add persistent user accounts so research sessions can be saved, an interactive map tool for spatial suburb comparison, suburb comparison mode (side-by-side analysis), and investment scoring to surface the highest-potential suburbs based on user-defined criteria.",
   },
   {
     slug: "aus-super-calculator",
-    title: "Australian Superannuation Calculator",
+    title: "Australian Superannuation Growth Calculator",
     tagline: "Interactive super growth projector encoding Australian tax rules.",
     description:
-      "A fully client-side superannuation growth calculator built for Australian professionals. Encodes ATO rules for FY2025–26 including the Superannuation Guarantee rate, concessional contribution caps, Division 293 tax for high earners, and the Low Income Super Tax Offset (LISTO). Features scenario comparison mode, inflation-adjusted projections, a year-by-year breakdown table, and reactive input validation. Built with React, Tailwind CSS, and Chart.js — deployed on Vercel with no backend dependency.",
-    tags: ["Personal Finance", "React", "Data Viz"],
-    techStack: ["React", "Vite", "Tailwind CSS", "Chart.js"],
+      "A fully client-side React app encoding Australian ATO superannuation rules for FY2025–26, built to give fellow Australians a genuinely useful and free super projection tool.",
+    tags: ["Personal Finance", "Client-side", "React", "Australian Tax Rules", "Data Viz"],
+    techStack: ["React", "Vite", "Tailwind CSS", "Chart.js", "Vercel"],
+    stack: ["React", "Vite", "Tailwind CSS", "Chart.js", "Vercel"],
     liveUrl: "https://aus-super-calculator.vercel.app",
     githubUrl: "https://github.com/sakshamnagpal/super-calculator",
     featured: false,
+    employer: "Personal Project",
+    period: "2025",
+    summary:
+      "A fully client-side React app encoding Australian ATO superannuation rules for FY2025–26, built to give fellow Australians a genuinely useful and free super projection tool.",
+    problem:
+      "Most freely available superannuation calculators are either oversimplified or buried behind financial product sign-up flows. There was no clean, independent, client-side tool that encoded the full ATO ruleset — concessional caps, Division 293 tax, LISTO, salary sacrifice — and let users model their own scenarios without an account or backend dependency.",
+    approach:
+      "Built entirely client-side using React, Vite, Tailwind CSS, and Chart.js — with no backend and no runtime AI calls. The full ATO rules engine was written as a standalone JavaScript module encoding FY2025–26 rules: Superannuation Guarantee rates, concessional contribution caps ($30k), Division 293 tax for high earners (>$250k), and the Low Income Super Tax Offset (LISTO). The UI was built in a two-column layout — inputs left, results and chart right — with reactive validation that surfaces cap breach warnings and Division 293 applicability as the user types. A scenario comparison mode was added to let users model a baseline versus an alternative contribution strategy side by side on the same chart. The app was deployed on Vercel as a fully static artifact.",
+    keyDecisions: [
+      {
+        decision: "Fully client-side, no backend",
+        detail:
+          "Deliberately avoided any backend or runtime API calls. All projection logic runs in the browser — which keeps the app free to host, instant to load, and privacy-preserving. The ATO rules are stable enough year-to-year that encoding them at build time is a valid approach.",
+      },
+      {
+        decision: "Standalone rules engine module",
+        detail:
+          "Separated the ATO rules logic into a dedicated superRules.js module before building any UI. This made the calculation engine independently testable and kept the UI layer clean — a pattern that would scale if investment strategy modules were added later.",
+      },
+      {
+        decision: "Scenario comparison mode",
+        detail:
+          "Added a comparison mode that renders two independent contribution strategies — baseline and alternative — on the same four-line chart (nominal and real for each). This was the most complex UI feature but meaningfully increases the tool's usefulness for anyone modelling salary sacrifice trade-offs.",
+      },
+    ],
+    challenges: [
+      {
+        title: "ATO ruleset accuracy",
+        body: "Encoding the full ATO ruleset accurately required careful research — rules like the concessional cap, LISTO income thresholds, and Division 293 interaction are non-trivial to implement correctly.",
+      },
+      {
+        title: "Scenario comparison layout",
+        body: "The scenario comparison layout required significant iteration to avoid disrupting the existing two-column layout on both desktop and mobile.",
+      },
+    ],
+    outcome:
+      "A deployed, publicly accessible tool at aus-super-calculator.vercel.app. Demonstrates the ability to independently scope, build, and ship a domain-specific client-side application — encoding complex real-world rules into a clean, usable product — without any backend infrastructure.",
+    myRole:
+      "Sole developer. Scoped the feature set, authored the rules engine, built and iterated the UI, handled responsive layout, and deployed to Vercel. Used Claude Code throughout the build as a development accelerator.",
+    whatIdDoDifferently:
+      "I would add investment strategy selection — letting users model different risk profiles and their historical return assumptions rather than a single fixed rate. I would also add account creation and persistent storage so users can save and return to their projections over time rather than re-entering inputs each session.",
   },
   {
     slug: "anz-customer-segmentation",

@@ -19,6 +19,11 @@ export type Project = {
   outcome?: string
   role?: string
   retrospective?: string
+  // Extended fields used by newer project pages
+  keyDecisions?: { decision: string; detail: string }[]
+  myRole?: string
+  whatIdDoDifferently?: string
+  stack?: string[]
 }
 
 export const projects: Project[] = [
@@ -173,16 +178,6 @@ export const projects: Project[] = [
       "This was the most carefully curated delivery of the three Jetstar AI projects, benefiting directly from the fail-fast learnings of earlier PoCs. If I were to repeat it, I would ensure the Data Governance and procurement pathway was documented from day one — much of the early phase involved waiting on responses from multiple stakeholders to understand the process. That documentation now exists and will accelerate future agentic initiatives in the organisation.",
   },
   {
-    slug: "customer-segmentation-anz",
-    title: "Customer Segmentation & Risk Modelling",
-    tagline: "ML-driven segmentation models serving 5M+ retail banking customers.",
-    description:
-      "Led the customer segmentation modelling workstream at ANZ Bank, coordinating analysis across a team of analysts and presenting outcomes directly to senior stakeholders. Designed controlled experiments to evaluate credit risk and segmentation models serving approximately 5 million retail banking customers. Identified feature drift and model degradation patterns that informed quarterly retraining cycles, maintaining accuracy within agreed SLA thresholds.",
-    tags: ["ML", "Experimentation", "Financial Services"],
-    techStack: ["Python", "scikit-learn", "SQL", "Tableau"],
-    featured: false,
-  },
-  {
     slug: "melbourne-property-research-agent",
     title: "Melbourne Property Research Agent",
     tagline: "Agentic AI tool for suburb-level property research and investment analysis.",
@@ -205,6 +200,58 @@ export const projects: Project[] = [
     liveUrl: "https://aus-super-calculator.vercel.app",
     githubUrl: "https://github.com/sakshamnagpal/super-calculator",
     featured: false,
+  },
+  {
+    slug: "anz-customer-segmentation",
+    title: "ANZ Plus Customer Segmentation",
+    tagline: "Behavioural clustering model identifying 12 cohorts that structured the ANZ Plus phased rollout.",
+    description:
+      "Built the foundational customer segmentation model for ANZ Plus, identifying 12 behavioural cohorts that drove phased product adoption across 2.4M customers.",
+    tags: ["Segmentation", "Clustering", "Neo-banking", "Product Analytics", "GCP"],
+    techStack: ["Python", "scikit-learn", "K-Means", "DBSCAN", "Gaussian Mixture Models", "GCP", "Teradata", "SQL", "pandas"],
+    stack: ["Python", "scikit-learn", "K-Means", "DBSCAN", "Gaussian Mixture Models", "GCP", "Teradata", "SQL", "pandas"],
+    featured: false,
+    employer: "Australia and New Zealand Bank (ANZ)",
+    period: "2019 – 2023",
+    summary:
+      "Built the foundational customer segmentation model for ANZ Plus, identifying 12 behavioural cohorts that drove phased product adoption across 2.4M customers.",
+    problem:
+      "ANZ was launching ANZ Plus, a greenfield neo-banking product. With no prior segmentation and an engineering team that couldn't build all features simultaneously, product and engineering leadership needed a data-driven way to identify which customer cohorts to prioritise — and in what order — to maximise early adoption. There was no existing segmentation framework to build on.",
+    approach:
+      "Built a behavioural clustering model from scratch using customer attributes spanning spending patterns, technology usage, age, mobile app engagement, and transaction behaviours. Sourced and unified data across two environments — on-premises Teradata and GCP — before modelling. Evaluated K-Means, DBSCAN, and Gaussian Mixture Models, selecting the final approach by visually inspecting cluster distributions and assessing separation quality. Identified 12 distinct customer cohorts, then worked iteratively with business teams to refine cohort definitions against real-world feature delivery constraints from the mobile engineering teams. Deployed the final model on GCP.",
+    keyDecisions: [
+      {
+        decision: "Clustering methodology selection",
+        detail:
+          "Evaluated K-Means, DBSCAN, and Gaussian Mixture Models. Rather than defaulting to K-Means, visualised the cluster distributions for each approach and selected based on actual point separation quality — which revealed the most defensible cohort structure for stakeholder communication.",
+      },
+      {
+        decision: "Feature set design",
+        detail:
+          "Deliberately combined behavioural signals (spending patterns, transaction types, PayID usage) with demographic and engagement signals (age, mobile app usage) to produce cohorts that were both statistically distinct and actionable for product prioritisation.",
+      },
+      {
+        decision: "GCP as deployment target",
+        detail:
+          "Deployed on GCP as the organisation's preferred cloud platform, which also simplified data access given a portion of the input data already resided there — reducing pipeline complexity.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Data unification across environments",
+        body: "Sourcing and unifying training data split across on-premises Teradata and GCP required non-trivial pipeline work before modelling could begin.",
+      },
+      {
+        title: "Iterative cohort refinement",
+        body: "With no prior segmentation as a reference point, cluster definitions went through multiple iterations — requiring close collaboration with business teams to validate cohorts against the realities of feature delivery timelines and mobile engineering capacity.",
+      },
+    ],
+    outcome:
+      "Identified 12 customer cohorts that structured the entire ANZ Plus phased rollout. Phase 1 (simple transfers) onboarded ~250K customers in beta. Phase 2 (PayID, bank transfers, savings buckets) added ~1M customers. Phase 3 (MVP including home loans) brought the total to 2.4M customers across all phases.",
+    myRole:
+      "Owned the segmentation modelling end-to-end, supported by a data analyst I was managing. Collaborated with the Data Area Lead on stakeholder communications and contributed directly to presenting model outcomes to senior business stakeholders.",
+    whatIdDoDifferently:
+      "I would take on more explicit leadership of the workstream rather than deferring upward. I would also ensure alignment with the mobile engineering team happened before modelling began — rather than iterating cohort definitions reactively against feature delivery constraints that were already locked.",
   },
 ]
 

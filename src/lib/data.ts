@@ -403,6 +403,20 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    role: "Senior Manager, Data Science and AI",
+    company: "Angle Auto Finance",
+    location: "Melbourne, Australia",
+    period: "Jul 2026 – Present",
+    summary: "Leading data science and AI at Angle, building an AI Centre of Excellence from the ground up and directing a team delivering across credit, pricing, risk, and other core business initiatives for a fast-growing non-bank lender.",
+    highlights: [
+      "Engaged to build Angle's AI Centre of Excellence from scratch, defining the enterprise capability, delivery model, and governance framework for AI/ML adoption",
+      "Leading a team of data scientists delivering across credit, pricing, risk, and other business-critical initiatives, establishing team structure, ways of working, and delivery standards",
+      "Operating in an Azure-native environment, ramping up on Microsoft AI Foundry, Azure ML, and Azure OpenAI Service",
+      "Leading evaluation of leading LLM providers to inform enterprise AI platform strategy",
+      "Reporting to the Head of Enterprise Data, with mandate spanning AI strategy, delivery, and organisation-wide capability uplift",
+    ],
+  },
+  {
     role: "AI Implementation Lead & Senior Data Scientist",
     company: "Jetstar Airways",
     location: "Melbourne, Australia",

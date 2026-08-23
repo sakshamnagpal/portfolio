@@ -22,7 +22,7 @@ export function Hero() {
             style={{ animationDelay: "60ms" }}
           />
           <span className="font-mono text-xs text-accent uppercase tracking-widest">
-            Senior Data Scientist &amp; AI Engineer
+            AI &amp; Data Leader | Building Enterprise AI Capability
           </span>
         </div>
 
@@ -39,8 +39,9 @@ export function Hero() {
           className="text-secondary text-lg max-w-xl leading-relaxed mb-10 animate-fade-up"
           style={{ animationDelay: "240ms" }}
         >
-          I build data-driven systems and agentic AI pipelines - turning complex
-          problems into production-ready solutions.
+          I build data-driven systems and agentic AI pipelines — and now I&apos;m
+          building the AI capability itself, leading data science and AI at
+          Angle Auto Finance.
         </p>
 
         {/* CTAs */}

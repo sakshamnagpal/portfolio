@@ -26,7 +26,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Saksham Nagpal | Senior Data Scientist & AI Engineer",
   description:
-    "Portfolio of Sak Nagpal — Senior Data Scientist specialising in agentic AI, LLMs, NLP, and production ML systems. Based in Melbourne, Australia.",
+    "Portfolio of Sak Nagpal — AI & Data Leader specialising in agentic AI, LLMs, NLP, and enterprise AI capability building. Based in Melbourne, Australia.",
   keywords: [
     "data scientist",
     "AI engineer",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Saksham Nagpal | Senior Data Scientist & AI Engineer",
     description:
-      "Portfolio of Sak Nagpal — Senior Data Scientist specialising in agentic AI, LLMs, NLP, and production ML systems. Based in Melbourne, Australia.",
+      "Portfolio of Sak Nagpal — AI & Data Leader specialising in agentic AI, LLMs, NLP, and enterprise AI capability building. Based in Melbourne, Australia.",
     type: "website",
   },
   icons: {
